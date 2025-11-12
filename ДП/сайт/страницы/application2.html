@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПРИЛОЖЕНИЕ Б - Пояснительная записка</title>
+    <style>
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Цветовая схема из colorscheme.ru */
+        :root {
+            --primary-color: #2F9292;
+            --secondary-color: #35AE5E;
+            --dark-color: #07444A;
+            --light-color: #83E3E3;
+            --accent-color: #81E3E3;
+        }
+
+        /* Верхняя часть с шапкой и меню */
+        .top-section {
+            display: flex;
+            background-color: var(--dark-color);
+        }
+
+        /* Шапка (левый верхний угол) */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 250px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .college-name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        /* Навигация */
+        nav {
+            flex: 1;
+            background-color: var(--dark-color);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        nav li {
+            margin: 0 10px 0 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Основной контент */
+        main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content h1 {
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        /* Плавающий фрейм для контента */
+        .floating-frame {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Стили для таблицы */
+        .physical-scheme-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .physical-scheme-table caption {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: var(--light-color);
+            border-radius: 5px;
+        }
+
+        .physical-scheme-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid var(--dark-color);
+        }
+
+        .physical-scheme-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .physical-scheme-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .physical-scheme-table tr:hover {
+            background-color: #e9f7f7;
+            transition: background-color 0.3s;
+        }
+
+        .physical-scheme-table td:first-child {
+            font-weight: bold;
+            background-color: var(--light-color);
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-info {
+            margin-bottom: 10px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+            }
+            
+            header {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .physical-scheme-table {
+                font-size: 12px;
+            }
+            
+            .physical-scheme-table th,
+            .physical-scheme-table td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .physical-scheme-table {
+                font-size: 11px;
+            }
+            
+            .physical-scheme-table th,
+            .physical-scheme-table td {
+                padding: 6px 8px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .floating-frame {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхняя часть с шапкой и меню -->
+    <div class="top-section">
+        <!-- Шапка (левый верхний угол) -->
+        <header>
+            <div class="logo">
+                <img src="../картинки/лого.jpg" alt="Логотип">
+                <div class="college-name">
+                    ГБПОУ «Пермский политехнический колледж имени Н.Г. Славянова»
+                </div>
+            </div>
+        </header>
+
+        <!-- Навигация -->
+        <nav>
+            <div class="nav-container">
+                <ul>
+                    <li><a href="index.html">ГЛАВНАЯ</a></li>
+                    <li><a href="terms.html">ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</a></li>
+                    <li><a href="abbreviations.html">ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ</a></li>
+                    <li><a href="introduction.html">ВВЕДЕНИЕ</a></li>
+                    <li><a href="#">1 ПРОЕКТНАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">2 ЭКСПЛУАТАЦИОННАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">3 ЭКОНОМИЧЕСКАЯ ЧАСТЬ</a></li>
+                    <li><a href="technology.html">4 ТЕХНОЛОГИЯ HTML</a></li>
+                    <li><a href="Conclusion.html">ЗАКЛЮЧЕНИЕ</a></li>
+                    <li><a href="list.html">СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ</a></li>
+                    <li><a href="application.html">ПРИЛОЖЕНИЕ А - ЦВЕТОВАЯ СХЕМА</a></li>
+                    <li><a href="application2.html">ПРИЛОЖЕНИЕ Б - ФИЗИЧЕСКАЯ СХЕМА</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Основной контент -->
+    <main>
+        <div class="content">
+            <div class="floating-frame">
+                <h1>ПРИЛОЖЕНИЕ Б - ФИЗИЧЕСКАЯ СХЕМА</h1>
+                
+                <!-- Таблица Физическая схема -->
+                <table class="physical-scheme-table">
+                    <caption>Физическая схема</caption>
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Страница</th>
+                            <th>Название файла</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Главная</td>
+                            <td>Index.html</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Цветовая схема</td>
+                            <td>Colorscheme.html</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Валидность</td>
+                            <td>Valid.html</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Карта сайта</td>
+                            <td>Sitemap.html</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Кроссворд</td>
+                            <td>Cross.html</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Тест</td>
+                            <td>Test.html</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Автор</td>
+                            <td>Author.html</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Методы</td>
+                            <td>Methods.html</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>События</td>
+                            <td>Events.html</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Задачи</td>
+                            <td>Exercise.html</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+             
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>Андреев Никита Александрович, СА-22, вариант задания №1</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

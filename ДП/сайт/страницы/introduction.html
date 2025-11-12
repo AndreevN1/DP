@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВВЕДЕНИЕ - Пояснительная записка</title>
+    <style>
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Цветовая схема из colorscheme.ru */
+        :root {
+            --primary-color: #2F9292;
+            --secondary-color: #35AE5E;
+            --dark-color: #07444A;
+            --light-color: #83E3E3;
+            --accent-color: #81E3E3;
+        }
+
+        /* Верхняя часть с шапкой и меню */
+        .top-section {
+            display: flex;
+            background-color: var(--dark-color);
+        }
+
+        /* Шапка (левый верхний угол) */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 250px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .college-name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        /* Навигация */
+        nav {
+            flex: 1;
+            background-color: var(--dark-color);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        nav li {
+            margin: 0 10px 0 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Основной контент */
+        main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content h1 {
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        /* Плавающий фрейм для контента */
+        .floating-frame {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Стили для введения */
+        .introduction-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .introduction-text p {
+            margin-bottom: 20px;
+            text-indent: 1.5em;
+        }
+
+        .section-block {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid var(--primary-color);
+            background-color: #f9f9f9;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: var(--dark-color);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: "•";
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-right: 15px;
+            line-height: 1;
+        }
+
+        .section-content {
+            margin-left: 35px;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background-color: var(--light-color);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .conclusion-block {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            border: 1px solid var(--primary-color);
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-info {
+            margin-bottom: 10px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+            }
+            
+            header {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .introduction-text {
+                font-size: 1em;
+                text-align: left;
+            }
+            
+            .section-content {
+                margin-left: 25px;
+            }
+            
+            .section-block {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .floating-frame {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.1em;
+            }
+            
+            .section-title::before {
+                margin-right: 10px;
+            }
+            
+            .section-content {
+                margin-left: 20px;
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхняя часть с шапкой и меню -->
+    <div class="top-section">
+        <!-- Шапка (левый верхний угол) -->
+        <header>
+            <div class="logo">
+                <img src="../картинки/лого.jpg" alt="Логотип">
+                <div class="college-name">
+                    ГБПОУ «Пермский политехнический колледж имени Н.Г. Славянова»
+                </div>
+            </div>
+        </header>
+
+        <!-- Навигация -->
+        <nav>
+            <div class="nav-container">
+                <ul>
+                    <li><a href="index.html">ГЛАВНАЯ</a></li>
+                    <li><a href="terms.html">ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</a></li>
+                    <li><a href="abbreviations.html">ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ</a></li>
+                    <li><a href="introduction.html">ВВЕДЕНИЕ</a></li>
+                    <li><a href="#">1 ПРОЕКТНАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">2 ЭКСПЛУАТАЦИОННАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">3 ЭКОНОМИЧЕСКАЯ ЧАСТЬ</a></li>
+                    <li><a href="technology.html">4 ТЕХНОЛОГИЯ HTML</a></li>
+                    <li><a href="conclusion.html">ЗАКЛЮЧЕНИЕ</a></li>
+                    <li><a href="list.html">СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ</a></li>
+                    <li><a href="application.html">ПРИЛОЖЕНИЕ А - ЦВЕТОВАЯ СХЕМА</a></li>
+                    <li><a href="application2.html">ПРИЛОЖЕНИЕ Б - ФИЗИЧЕСКАЯ СХЕМА</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Основной контент -->
+    <main>
+        <div class="content">
+            <div class="floating-frame">
+                <h1>ВВЕДЕНИЕ</h1>
+                
+                <div class="introduction-text">
+                    <p>Актуальность данного проекта заключается в том, что интернет-учебник, в отличие от других видов электронных учебников, позволяет получить мгновенный доступ к искомому материалу. Благодаря простоте нахождение, человек способен сразу оценить качество представленного материала и решить нужен ли он ему. Это, в совокупности с быстрой навигацией, в сравнении с другими типами ЭУП, позволяет уменьшить время, затраченное на выполнение работы. Неоспоримым плюсом также является то, что большинство интернет-учебников бесплатные. Это помогает в реализации права на получение информации. Таким образом, интернет-учебник – это один из лучших способов распространения информации.</p>
+                    
+                    <div class="section-block">
+                        <div class="section-title">Цель работы</div>
+                        <div class="section-content">формируется из отглагольного существительного.</div>
+                    </div>
+                    
+                    <div class="section-block">
+                        <div class="section-title">Задачи работы</div>
+                        <div class="section-content">формируются из глагола совершенного вида.</div>
+                    </div>
+                    
+                    <div class="section-block">
+                        <div class="section-title">Объект исследования</div>
+                        <div class="section-content">часть объективно существующей реальности.</div>
+                    </div>
+                    
+                    <div class="section-block">
+                        <div class="section-title">Предмет исследования</div>
+                        <div class="section-content">конкретные стороны, свойства, характеристики объекта.</div>
+                    </div>
+                    
+                    <div class="section-block">
+                        <div class="section-title">Методы исследования</div>
+                        <div class="section-content">указываются методы, использованные для достижения цели.</div>
+                    </div>
+                    
+                    <div class="section-block">
+                        <div class="section-title">Ожидаемые результаты</div>
+                        <div class="section-content">краткое описание предполагаемых результатов, практическая значимость результатов.</div>
+                    </div>
+                    
+                    <div class="conclusion-block">
+                        <p><strong>Структура дипломного проекта:</strong> Дипломный проект состоит из пояснительной записки и практической части. Пояснительная записка включает: термины и определения, перечень сокращений и обозначений, введение, проектную часть, эксплуатационную часть, экономическую часть, заключение, список использованных источников, приложение А. Практическая часть представлена чертежом детали. Общий объем пояснительной записки составляет 40 страниц.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>Андреев Никита Александрович, СА-22, вариант задания №1</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

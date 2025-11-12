@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 ТЕХНОЛОГИЯ HTML - Пояснительная записка</title>
+    <style>
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Цветовая схема из colorscheme.ru */
+        :root {
+            --primary-color: #2F9292;
+            --secondary-color: #35AE5E;
+            --dark-color: #07444A;
+            --light-color: #83E3E3;
+            --accent-color: #81E3E3;
+        }
+
+        /* Верхняя часть с шапкой и меню */
+        .top-section {
+            display: flex;
+            background-color: var(--dark-color);
+        }
+
+        /* Шапка (левый верхний угол) */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 250px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .college-name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        /* Навигация */
+        nav {
+            flex: 1;
+            background-color: var(--dark-color);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        nav li {
+            margin: 0 10px 0 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Основной контент */
+        main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content h1 {
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        /* Плавающий фрейм для контента */
+        .floating-frame {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Стили для содержания */
+        .section-title {
+            color: var(--dark-color);
+            font-size: 1.4em;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .subsection-title {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin: 25px 0 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .content-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .goals-list, .audience-list, .tools-list, .sizes-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .goals-list li, .audience-list li, .tools-list li, .sizes-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .goals-list li::before, .audience-list li::before, .tools-list li::before, .sizes-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 15px 0;
+            display: block;
+        }
+
+        .screenshot-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .screenshot-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .link-block {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* Стили для таблицы руководства по стилю */
+        .style-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .style-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid var(--dark-color);
+        }
+
+        .style-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .style-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .style-table tr:hover {
+            background-color: #e9f7f7;
+        }
+
+        /* Стили для блока с кодом */
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attribute {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-info {
+            margin-bottom: 10px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+            }
+            
+            header {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .content-text {
+                font-size: 1em;
+                text-align: left;
+            }
+            
+            .style-table {
+                font-size: 12px;
+            }
+            
+            .style-table th,
+            .style-table td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .floating-frame {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.2em;
+            }
+            
+            .subsection-title {
+                font-size: 1.1em;
+            }
+            
+            .code-block {
+                font-size: 12px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхняя часть с шапкой и меню -->
+    <div class="top-section">
+        <!-- Шапка (левый верхний угол) -->
+        <header>
+            <div class="logo">
+                <img src="../картинки/лого.jpg" alt="Логотип">
+                <div class="college-name">
+                    ГБПОУ «Пермский политехнический колледж имени Н.Г. Славянова»
+                </div>
+            </div>
+        </header>
+
+        <!-- Навигация -->
+        <nav>
+            <div class="nav-container">
+                <ul>
+                    <li><a href="index.html">ГЛАВНАЯ</a></li>
+                    <li><a href="terms.html">ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</a></li>
+                    <li><a href="abbreviations.html">ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ</a></li>
+                    <li><a href="introduction.html">ВВЕДЕНИЕ</a></li>
+                    <li><a href="#">1 ПРОЕКТНАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">2 ЭКСПЛУАТАЦИОННАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">3 ЭКОНОМИЧЕСКАЯ ЧАСТЬ</a></li>
+                    <li><a href="technology.html">4 ТЕХНОЛОГИЯ HTML</a></li>
+                    <li><a href="conclusion.html">ЗАКЛЮЧЕНИЕ</a></li>
+                    <li><a href="list.html">СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ</a></li>
+                    <li><a href="application.html">ПРИЛОЖЕНИЕ А - ЦВЕТОВАЯ СХЕМА</a></li>
+                    <li><a href="application2.html">ПРИЛОЖЕНИЕ Б - ФИЗИЧЕСКАЯ СХЕМА</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Основной контент -->
+    <main>
+        <div class="content">
+            <div class="floating-frame">
+                <h1>4 ТЕХНОЛОГИЯ HTML</h1>
+                
+                <div class="section-title">4.1 Подготовительный этап</div>
+                
+                <div class="content-text">
+                    <strong>Цели сайта:</strong>
+                </div>
+                <ol class="goals-list">
+                    <li>Создать целостное и профессиональное впечатление.</li>
+                    <li>Наглядно представить суть проекта.</li>
+                    <li>Продемонстрировать процесс, а не только результат.</li>
+                    <li>Обеспечить легкий и быстрый доступ к ключевым выводам.</li>
+                    <li>Выступить в роли мощного визуального сопровождения для устной речи.</li>
+                </ol>
+                
+                <div class="content-text">
+                    <strong>Целевая аудитория:</strong>
+                </div>
+                <ol class="audience-list">
+                    <li>Курс: выпускной курс.</li>
+                    <li>Специальность: сетевое и системное администрирование.</li>
+                    <li>Дисциплина: Структура СКС.</li>
+                </ol>
+                
+                <div class="link-block">
+                    <strong>Физическая схема:</strong> 
+                    <a href="application2.html">ПРИЛОЖЕНИЕ Б - ФИЗИЧЕСКАЯ СХЕМА</a>
+                </div>
+                
+                <div class="screenshot-container">
+                    <img src="../картинки/ЛХ.jpg" alt="Логическая схема сайта" class="screenshot">
+                    <div class="screenshot-caption">Логическая схема сайта</div>
+                </div>
+
+                <div class="subsection-title">4.1.1 Технические и программные средства</div>
+                <ol class="tools-list">
+                    <li>Компьютер с доступом в интернет.</li>
+                    <li>Браузер.</li>
+                    <li>Sublime Text.</li>
+                    <li>Microsoft Word.</li>
+                </ol>
+
+                <div class="section-title">4.2 Дизайн</div>
+                
+                <div class="content-text">
+                    Для веб-сайта мне был предложен шаблон №1:
+                </div>
+                
+                <div class="screenshot-container">
+                    <img src="шаблон.png" alt="Шаблон сайта" class="screenshot">
+                    <div class="screenshot-caption">Шаблон №1</div>
+                </div>
+                
+                <div class="content-text">
+                    <strong>Размеры блоков:</strong>
+                </div>
+                <ol class="sizes-list">
+                    <li>Логотип – 60x60px.</li>
+                    <li>Шапка – 100px на 100%(резиновая).</li>
+                    <li>Меню – 50px на 100%(резиновая).</li>
+                    <li>Контент – 600px на 90%(резиновая).</li>
+                    <li>Подвал – 100px на 100%(резиновая).</li>
+                </ol>
+                
+                <div class="link-block">
+                    <strong>Цветовая схема сайта:</strong> 
+                    <a href="application.html">ПРИЛОЖЕНИЕ А - ЦВЕТОВАЯ СХЕМА</a>
+                </div>
+                
+                <div class="content-text">
+                    Для проекта был выбран шрифт Arial, так как он обладает приемлемой читаемостью, что положительно сказывается на восприятии информации и в целом сочетается с дизайном сайта.
+                </div>
+
+                <div class="subsection-title">4.2.1 Логотип</div>
+                
+                <div class="content-text">
+                    На сайте размещен 1 логотип:
+                </div>
+                
+                <div class="screenshot-container">
+                    <img src="../картинки/лого.jpg" alt="Логотип сайта" class="screenshot" style="max-width: 200px;">
+                    <div class="screenshot-caption">Логотип сайта</div>
+                </div>
+
+                <div class="subsection-title">4.2.2 Руководство по стилю</div>
+                
+                <table class="style-table">
+                    <thead>
+                        <tr>
+                            <th>Элемент</th>
+                            <th>Цвет</th>
+                            <th>Шрифт</th>
+                            <th>Размер</th>
+                            <th>Отступы</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Заголовок h1</td>
+                            <td>#07444A</td>
+                            <td>Arial</td>
+                            <td>1.5em</td>
+                            <td>margin-bottom: 30px</td>
+                        </tr>
+                        <tr>
+                            <td>Основной текст</td>
+                            <td>#333333</td>
+                            <td>Arial</td>
+                            <td>1.1em</td>
+                            <td>line-height: 1.8</td>
+                        </tr>
+                        <tr>
+                            <td>Ссылки</td>
+                            <td>#2F9292</td>
+                            <td>Arial</td>
+                            <td>0.9rem</td>
+                            <td>padding: 8px 15px</td>
+                        </tr>
+                        <tr>
+                            <td>Шапка</td>
+                            <td>#2F9292</td>
+                            <td>Arial</td>
+                            <td>0.9rem</td>
+                            <td>padding: 15px</td>
+                        </tr>
+                        <tr>
+                            <td>Подвал</td>
+                            <td>#07444A</td>
+                            <td>Arial</td>
+                            <td>1em</td>
+                            <td>padding: 15px 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="subsection-title">4.2.3 Верстка</div>
+                
+                <div class="content-text">
+                    Пример структуры HTML-кода, демонстрирующий принцип вложенности тегов:
+                </div>
+                
+                <div class="code-block">
+                    <span class="code-tag">&lt;div</span> <span class="code-attribute">class</span>=<span class="code-value">"top-section"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-comment">&lt;!-- Шапка сайта --&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;header&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attribute">class</span>=<span class="code-value">"logo"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;img</span> <span class="code-attribute">src</span>=<span class="code-value">"лого.jpg"</span> <span class="code-attribute">alt</span>=<span class="code-value">"Логотип"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attribute">class</span>=<span class="code-value">"college-name"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ГБПОУ «Пермский политехнический колледж...<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/header&gt;</span><br>
+                    <br>
+                    &nbsp;&nbsp;<span class="code-comment">&lt;!-- Навигационное меню --&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;nav&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attribute">class</span>=<span class="code-value">"nav-container"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;ul&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attribute">href</span>=<span class="code-value">"index.html"</span><span class="code-tag">&gt;</span>ГЛАВНАЯ<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Остальные пункты меню --&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/nav&gt;</span><br>
+                    <span class="code-tag">&lt;/div&gt;</span><br>
+                    <br>
+                    <span class="code-comment">&lt;!-- Основной контент --&gt;</span><br>
+                    <span class="code-tag">&lt;main&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attribute">class</span>=<span class="code-value">"content"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;div</span> <span class="code-attribute">class</span>=<span class="code-value">"floating-frame"</span><span class="code-tag">&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Заголовок страницы<span class="code-tag">&lt;/h1&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Содержимое страницы...<span class="code-tag">&lt;/p&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;/div&gt;</span><br>
+                    <span class="code-tag">&lt;/main&gt;</span>
+                </div>
+                
+                <div class="content-text">
+                    <strong>Комментарии к коду:</strong><br>
+                    • Теги вложены друг в друга для создания иерархической структуры<br>
+                    • Классы используются для стилизации элементов через CSS<br>
+                    • Комментарии помогают ориентироваться в коде<br>
+                    • Семантические теги (header, nav, main) улучшают читаемость
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>Андреев Никита Александрович, СА-22, вариант задания №1</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

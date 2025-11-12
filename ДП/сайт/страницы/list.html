@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ - Пояснительная записка</title>
+    <style>
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Цветовая схема из colorscheme.ru */
+        :root {
+            --primary-color: #2F9292;
+            --secondary-color: #35AE5E;
+            --dark-color: #07444A;
+            --light-color: #83E3E3;
+            --accent-color: #81E3E3;
+        }
+
+        /* Верхняя часть с шапкой и меню */
+        .top-section {
+            display: flex;
+            background-color: var(--dark-color);
+        }
+
+        /* Шапка (левый верхний угол) */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 250px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .college-name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        /* Навигация */
+        nav {
+            flex: 1;
+            background-color: var(--dark-color);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        nav li {
+            margin: 0 10px 0 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Основной контент */
+        main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content h1 {
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        /* Плавающий фрейм для контента */
+        .floating-frame {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Стили для списка источников */
+        .sources-list {
+            list-style: none;
+            counter-reset: source-counter;
+            padding: 0;
+        }
+
+        .sources-list li {
+            counter-increment: source-counter;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            background-color: #f9f9f9;
+            border-radius: 0 5px 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .sources-list li:hover {
+            background-color: #e9f7f7;
+            transform: translateX(5px);
+        }
+
+        .sources-list li::before {
+            content: counter(source-counter);
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-right: 15px;
+            display: inline-block;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .source-item {
+            line-height: 1.8;
+        }
+
+        .source-url {
+            color: var(--dark-color);
+            font-style: italic;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .source-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-info {
+            margin-bottom: 10px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+            }
+            
+            header {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .sources-list li {
+                padding: 10px;
+            }
+            
+            .sources-list li::before {
+                margin-right: 10px;
+                min-width: 25px;
+                padding: 3px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .floating-frame {
+                padding: 20px;
+            }
+            
+            .source-item {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхняя часть с шапкой и меню -->
+    <div class="top-section">
+        <!-- Шапка (левый верхний угол) -->
+        <header>
+            <div class="logo">
+                <img src="../картинки/лого.jpg" alt="Логотип">
+                <div class="college-name">
+                    ГБПОУ «Пермский политехнический колледж имени Н.Г. Славянова»
+                </div>
+            </div>
+        </header>
+
+        <!-- Навигация -->
+        <nav>
+            <div class="nav-container">
+                <ul>
+                    <li><a href="index.html">ГЛАВНАЯ</a></li>
+                    <li><a href="terms.html">ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</a></li>
+                    <li><a href="abbreviations.html">ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ</a></li>
+                    <li><a href="introduction.html">ВВЕДЕНИЕ</a></li>
+                    <li><a href="#">1 ПРОЕКТНАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">2 ЭКСПЛУАТАЦИОННАЯ ЧАСТЬ</a></li>
+                    <li><a href="#">3 ЭКОНОМИЧЕСКАЯ ЧАСТЬ</a></li>
+                    <li><a href="technology.html">4 ТЕХНОЛОГИЯ HTML</a></li>
+                    <li><a href="Conclusion.html">ЗАКЛЮЧЕНИЕ</a></li>
+                    <li><a href="list.html">СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ</a></li>
+                    <li><a href="application.html">ПРИЛОЖЕНИЕ А - ЦВЕТОВАЯ СХЕМА</a></li>
+                    <li><a href="application2.html">ПРИЛОЖЕНИЕ Б - ФИЗИЧЕСКАЯ СХЕМА</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Основной контент -->
+    <main>
+        <div class="content">
+            <div class="floating-frame">
+                <h1>СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ</h1>
+                
+                <ol class="sources-list">
+                    <li class="source-item">
+                        Приказ Минобразования РФ от 19 декабря 2013 г. № 1367 «Об утверждении Порядка организации и осуществления образовательной деятельности по образовательным программам высшего образования - программам бакалавриата, программам специалитета, программам магистратуры».
+                        <span class="source-url">URL: http://www.consultant.ru/document/cons_doc_LAW_159671/</span>
+                        <span class="source-date">(дата обращения: 04.08.2016)</span>
+                    </li>
+                    
+                    <li class="source-item">
+                        ГОСТ 7.0.96-2016 Система стандартов по информации, библиотечному и издательскому делу. Электронные библиотеки. Основные виды. Структура. Технология формирования. - М.: Стандартинформ, 2016. - 16 с.
+                    </li>
+                    
+                    <li class="source-item">
+                        ISO 25964-1:2011. Information and documentation - Thesauri and interoperability with other vocabularies - Part 1: Thesauri for information retrieval.
+                        <span class="source-url">URL: http://www.iso.org/iso/catalogue_detail.htm?csnumber53657</span>
+                        <span class="source-date">(дата обращения: 20.10.2016)</span>
+                    </li>
+                    
+                    <li class="source-item">
+                        Земсков А.И., Шрайберг Я.Л. Электронные библиотеки: учебник для вузов. - М: Либерея, 2003. - 351 с.
+                    </li>
+                    
+                    <li class="source-item">
+                        Костюк К.Н. Книга в новой медицинской среде. - М.: Директ-Медиа, 2015. - 430 с.
+                    </li>
+                    
+                    <li class="source-item">
+                        Антопольский А.Б. Система метаданных в электронных библиотеках//Библиотеки и ассоциации в меняющемся мире: Новые технологии и новые формы сотрудничества: Тр. 8-й Междунар. конф. "Крым-2001"/г. Судак, (июнь 2001 г.). - Т. 1. - М., 2001, - С. 287 - 298.
+                    </li>
+                    
+                    <li class="source-item">
+                        Гуреев В.Н., Мазов Н.А. Использование библиометрии для оценки значимости журналов в научных библиотеках (обзор)//Научно-техническая информация. Сер. 1. - 2015. - N 2. - С. 8 - 19.
+                    </li>
+                    
+                    <li class="source-item">
+                        Колкова Н.И., Скипор И.Л. Терминосистема предметной области «Электронные информационные ресурсы»: взгляд с позиций теории и практики//Научн. и техн. б-ки. - 2016. - N 7. - С. 24 - 41.
+                    </li>
+                    
+                    <li class="source-item">
+                        Леготин Е.Ю. Организация метаданных в хранилище данных//Научный поиск. Технические науки: Материалы 3-й науч. конф. аспирантов и докторантов/отв. за вып. С.Д. Ваулин; Юж.-Урал. гос. ун-т. Т. 2. - Челябинск: Издательский центр ЮУрГУ, 2011. - С. 128 - 132.
+                    </li>
+                    
+                    <li class="source-item">
+                        Парфенова С.Л., Гришакина Е.Г., Золотарев Д.В. 4-я Международная научно-практическая конференция «Научное издание международного уровня - 2015: современные тенденции в мировой практике редактирования, издания и оценки научных публикаций»//Наука. Инновации. Образование. - 2015. - N 17. - С. 241 - 252.
+                    </li>
+                    
+                    <li class="source-item">
+                        Статистические показатели российского книгоиздания в 2006 г.: цифры и рейтинги [Электронный ресурс]. - 2006.
+                        <span class="source-url">URL: http://bookhamber.ru/stat_2006.htm</span>
+                        <span class="source-date">(дата обращения 12.03.2009)</span>
+                    </li>
+                    
+                    <li class="source-item">
+                        Web of Science [Электронный ресурс].
+                        <span class="source-url">URL: http://apps.webofknowledge.com/</span>
+                        <span class="source-date">(дата обращения 15.11.2016)</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>Андреев Никита Александрович, СА-22, вариант задания №1</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
